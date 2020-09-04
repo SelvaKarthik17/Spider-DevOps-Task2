@@ -17,40 +17,37 @@ then
    a=1
    while [ $a -lt 6 ]
    do
-	s1=$(ls home/d1_patient$a/Symptoms/ | wc -l)
-	s2=$(ls home/d2_patient$a/Symptoms/ | wc -l)
+	b=1
+	while [ $b -lt 3 ]
+	do
+		s$b=$(ls home/d$b_patient$a/Symptoms/ | wc -l)
 	
-	if [ $s1 -gt 20 ]
-	then
-	  userdel -r -f d1_patient$a
-	fi
-	
-	if [ $s2 -gt 20 ]
-	then
-	  userdel -r -f d2_patient$a
-	fi   
-	 
+		if [ $s$b -gt 20 ]
+		then
+	          userdel -r -f d$b_patient$a
+		fi
+	  b=$(expr $b + 1)
+	done
+	 	 
        a=$(expr $a + 1)
    done
+
+a=1
+while [ $a -lt 3 ]
+do
    
-   ds=$(ls home/doc1/Symptoms/ | wc -l)
+   ds=$(ls home/doc$a/Symptoms/ | wc -l)
    
    if [ $ds -gt 20 ]
    then 
-     userdel -r -f doc1
+     userdel -r -f doc$a
    fi
    
-   ds=$(ls home/doc2/Symptoms/ | wc -l)
-   
-   if [ $ds -gt 20 ]
-   then
-     userdel -r -f doc2
-   fi
-
+   a=$(expr $a + 1)
+done   
 
 else
-  echo "user not permitted"
-  
+    echo "user not permitted"  
 fi
 
 
