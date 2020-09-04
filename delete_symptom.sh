@@ -2,7 +2,7 @@
 
 user=$(whoami)
 
-if ["$user" = "doc1"] || ["$user" = "doc2"]
+if [[ "$user" == "doc"* ]]
 then
 
   echo "Enter the patient name:"
