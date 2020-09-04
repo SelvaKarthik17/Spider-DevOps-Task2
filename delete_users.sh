@@ -3,13 +3,22 @@
 a=1
 while [ $a -lt 6 ]
 do
-  userdel -r -f d1_patient$a
-  userdel -r -f d2_patient$a
+   b=1
+   while [ $b -lt 3 ]
+   do
+     userdel -r -f d$b_patient$a
+     b=$(expr $b + 1)
+   done
+
+  a=$(expr $a + 1)
 done
 
-userdel -r -f doc1
-
-userdel -r -f doc2
+a=1
+while [ $a -lt 3 ]
+do
+  userdel -r -f doc$a
+  a=$(expr $a + 1)
+done
 
 userdel -r -f corona
 
