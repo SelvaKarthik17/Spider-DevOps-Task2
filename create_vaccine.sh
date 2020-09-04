@@ -14,7 +14,7 @@ function create {
 
 user=$(whoami)
 
-if ["$user" = "doc1"] || ["$user" = "doc2"]
+if [[ "$user" == "doc"* ]]
 then
   echo "Enter the vaccine name to be created:";
   read r
